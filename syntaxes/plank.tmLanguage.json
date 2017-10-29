@@ -1,0 +1,114 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Plank",
+	"patterns": [
+		{
+			"comment": "Struct definition",
+			"match": "\\b(struct)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+			"captures": {
+				"1": { "name": "keyword.other.struct.plank" },
+				"2": { "name": "entity.name.type.plank" }
+			}
+		},
+		{
+			"comment": "Function definition",
+			"match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+			"captures": {
+				"1": { "name": "keyword.other.fn.plank" },
+				"2": { "name": "entity.name.function.plank" }
+			}
+		},
+		{
+			"comment": "Line comment",
+			"name": "comment.line.double-slash.plank",
+			"begin": "//",
+			"end": "$"
+		},
+		{ "include": "#keywords" },
+		{ "include": "#strings" },
+		{ "include": "#numbers" },
+		{ "include": "#types" },
+		{ "include": "#block_comment" }
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [ {
+				"name": "keyword.other.extern.plank",
+				"match": "\\bextern\\b"
+			}, {
+				"name": "keyword.other.fn.plank",
+				"match": "\\bfn\\b"
+			}, {
+				"name": "keyword.other.struct.plank",
+				"match": "\\bstruct\\b"
+			}, {
+				"name": "keyword.other.if.plank",
+				"match": "\\bif\\b"
+			}, {
+				"name": "keyword.other.else.plank",
+				"match": "\\belse\\b"
+			}, {
+				"name": "keyword.other.while.plank",
+				"match": "\\bwhile\\b"
+			}, {
+				"name": "keyword.other.loop.plank",
+				"match": "\\bloop\\b"
+			}, {
+				"name": "keyword.other.return.plank",
+				"match": "\\breturn\\b"
+			}, {
+				"name": "keyword.other.break.plank",
+				"match": "\\bbreak\\b"
+			}, {
+				"name": "keyword.other.continue.plank",
+				"match": "\\bcontinue\\b"
+			}, {
+				"name": "keyword.other.let.plank",
+				"match": "\\blet\\b"
+			}, {
+				"name": "keyword.other.true.plank",
+				"match": "\\btrue\\b"
+			}, {
+				"name": "keyword.other.false.plank",
+				"match": "\\bfalse\\b"
+			}, {
+				"name": "keyword.other.as.plank",
+				"match": "\\bas\\b"
+			}, {
+				"name": "keyword.other.as.plank",
+				"match": "\\bunit\\b"
+			} ]
+		},
+		"types": {
+			"patterns": [ {
+				"name": "storage.type.int.plank",
+				"match": "\\b([ui](8|16|32))\\b"
+			}, {
+				"name": "storage.type.bool.plank",
+				"match": "\\bbool\\b"
+			} ]
+		},
+		"strings": {
+			"patterns": [ {
+				"name": "string.quoted.double.plank",
+				"match": "\"(\\\\.|[^\"\\\\])*\""
+			}, {
+				"name": "string.quoted.single.plank",
+				"match": "'(\\\\.|[^'\\\\])*'"
+			} ]
+		},
+		"numbers": {
+			"patterns": [ {
+				"name": "constant.numeric.int.plank",
+				"match": "\\b(0|[1-9][0-9]*)([ui](8|16|32)?)?\\b"
+			} ]
+		},
+		"block_comment": {
+			"name": "comment.block.plank",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"patterns": [ { "include": "#block_comment" } ]
+		}
+	},
+	"scopeName": "source.plank"
+}
